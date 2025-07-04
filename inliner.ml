@@ -132,7 +132,7 @@ let rec check env e =
       let k1 = check env e1 in
       let k2 = check env e2 in
       (match canon k1 with
-       | Opaque -> Opaque
+       | Opaque -> unify Opaque k2; Opaque
        | Arrow(v,k) -> unify v k2; k
        | Unknown _ -> Opaque (* ok ? *)
        )

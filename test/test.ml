@@ -24,12 +24,20 @@ f g1 ;;
 
 
 let f = inline fun g -> g 42 in
+f ;;
+
+let f = inline fun g -> g 42 in
 let square = inline fun x -> (mult x) x in
 f square ;;
 
 let f = inline fun g -> g (h 6) in
 let square = inline fun x -> (mult x) x in
 f square ;;
+
+let f = fun g -> g (h 6) in
+let square = inline fun x -> (mult x) x in
+f square ;;
+
 
 let pid = inline fun int ->
           inline fun derivative ->
