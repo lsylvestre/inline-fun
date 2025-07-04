@@ -151,7 +151,7 @@ let rec check env e =
 
 let check_ok e =
   try 
-    let _ = check [] e in 
-    true 
-  with CannotUnify -> false
+    let k = check [] e in 
+    if k = Opaque then "Opaque" else "Inlinable" 
+  with CannotUnify -> "Ill-formed"
       

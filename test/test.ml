@@ -1,3 +1,9 @@
+let f = inline fun x -> x in
+f ;;
+
+let f = inline fun x -> x in
+f 42 ;;
+
 let f = fun x -> g x in
 f 42 ;;
 

@@ -10,8 +10,8 @@ let _ =
   
   List.iter (fun e ->
       let e' = inl e in
-      Format.(fprintf std_formatter "@[<v>source {%a}[%s]@,@,gives  {%a}@,---------------------------------------@,@]" 
+      Format.(fprintf std_formatter "@[<v>source {%a}@,@,check: %s@,@,inlining: {%a}@,---------------------------------------@,@]" 
          print_exp e 
-         (if check_ok e then "ok" else "ko")
+         (check_ok e)
          print_exp e')) es
     ;;

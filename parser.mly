@@ -12,13 +12,8 @@
 %token EOF LPAREN RPAREN 
 %token  RIGHT_ARROW
 
-%nonassoc  LET
-%nonassoc  IN
-%nonassoc  IF
 %right     RIGHT_ARROW
                 
-%nonassoc  IDENT LPAREN RPAREN    
-
 %start prog         /* the entry point */
 
 %type <Inliner.e list>  prog

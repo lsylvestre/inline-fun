@@ -157,14 +157,14 @@ type ('s, 'r) _menhir_state =
 
 and ('s, 'r) _menhir_cell1_exp = 
   | MenhirCell1_exp of 's * ('s, 'r) _menhir_state * (
-# 25 "parser.mly"
+# 20 "parser.mly"
       (Inliner.e)
 # 163 "parser.ml"
 )
 
 and ('s, 'r) _menhir_cell1_pat = 
   | MenhirCell1_pat of 's * ('s, 'r) _menhir_state * (
-# 26 "parser.mly"
+# 21 "parser.mly"
       (Inliner.x)
 # 170 "parser.ml"
 )
@@ -198,7 +198,7 @@ and ('s, 'r) _menhir_cell1_THEN =
 
 and _menhir_box_prog = 
   | MenhirBox_prog of (
-# 24 "parser.mly"
+# 19 "parser.mly"
       (Inliner.e list)
 # 204 "parser.ml"
 ) [@@unboxed]
@@ -206,11 +206,11 @@ and _menhir_box_prog =
 let _menhir_action_01 =
   fun e ->
     (
-# 36 "parser.mly"
+# 31 "parser.mly"
                                    ( e )
 # 212 "parser.ml"
      : (
-# 25 "parser.mly"
+# 20 "parser.mly"
       (Inliner.e)
 # 216 "parser.ml"
     ))
@@ -218,11 +218,11 @@ let _menhir_action_01 =
 let _menhir_action_02 =
   fun x ->
     (
-# 37 "parser.mly"
+# 32 "parser.mly"
                                    ( Var(x) )
 # 224 "parser.ml"
      : (
-# 25 "parser.mly"
+# 20 "parser.mly"
       (Inliner.e)
 # 228 "parser.ml"
     ))
@@ -230,11 +230,11 @@ let _menhir_action_02 =
 let _menhir_action_03 =
   fun n ->
     (
-# 38 "parser.mly"
+# 33 "parser.mly"
                                    ( Const(n) )
 # 236 "parser.ml"
      : (
-# 25 "parser.mly"
+# 20 "parser.mly"
       (Inliner.e)
 # 240 "parser.ml"
     ))
@@ -242,11 +242,11 @@ let _menhir_action_03 =
 let _menhir_action_04 =
   fun e1 p ->
     (
-# 39 "parser.mly"
+# 34 "parser.mly"
                                    ( Fun(p,e1) )
 # 248 "parser.ml"
      : (
-# 25 "parser.mly"
+# 20 "parser.mly"
       (Inliner.e)
 # 252 "parser.ml"
     ))
@@ -254,13 +254,13 @@ let _menhir_action_04 =
 let _menhir_action_05 =
   fun e ->
     (
-# 40 "parser.mly"
+# 35 "parser.mly"
                  ( match e with 
                    | Fun(x,e') -> InlineFun(x,e')
                    | _ -> Printf.printf "should be an expression"; exit 0 )
 # 262 "parser.ml"
      : (
-# 25 "parser.mly"
+# 20 "parser.mly"
       (Inliner.e)
 # 266 "parser.ml"
     ))
@@ -268,11 +268,11 @@ let _menhir_action_05 =
 let _menhir_action_06 =
   fun e1 e2 p ->
     (
-# 43 "parser.mly"
+# 38 "parser.mly"
                                    ( Let(p,e1,e2) )
 # 274 "parser.ml"
      : (
-# 25 "parser.mly"
+# 20 "parser.mly"
       (Inliner.e)
 # 278 "parser.ml"
     ))
@@ -280,11 +280,11 @@ let _menhir_action_06 =
 let _menhir_action_07 =
   fun e1 e2 e3 ->
     (
-# 45 "parser.mly"
+# 40 "parser.mly"
                                      ( If(e1,e2,e3) )
 # 286 "parser.ml"
      : (
-# 25 "parser.mly"
+# 20 "parser.mly"
       (Inliner.e)
 # 290 "parser.ml"
     ))
@@ -292,11 +292,11 @@ let _menhir_action_07 =
 let _menhir_action_08 =
   fun _1 _2 ->
     (
-# 46 "parser.mly"
+# 41 "parser.mly"
                                    ( App(_1,_2) )
 # 298 "parser.ml"
      : (
-# 25 "parser.mly"
+# 20 "parser.mly"
       (Inliner.e)
 # 302 "parser.ml"
     ))
@@ -304,11 +304,11 @@ let _menhir_action_08 =
 let _menhir_action_09 =
   fun x ->
     (
-# 50 "parser.mly"
+# 45 "parser.mly"
         ( x )
 # 310 "parser.ml"
      : (
-# 26 "parser.mly"
+# 21 "parser.mly"
       (Inliner.x)
 # 314 "parser.ml"
     ))
@@ -316,11 +316,11 @@ let _menhir_action_09 =
 let _menhir_action_10 =
   fun e es ->
     (
-# 31 "parser.mly"
+# 26 "parser.mly"
                              ( e::es )
 # 322 "parser.ml"
      : (
-# 24 "parser.mly"
+# 19 "parser.mly"
       (Inliner.e list)
 # 326 "parser.ml"
     ))
@@ -328,11 +328,11 @@ let _menhir_action_10 =
 let _menhir_action_11 =
   fun e ->
     (
-# 32 "parser.mly"
+# 27 "parser.mly"
                              ( [e] )
 # 334 "parser.ml"
      : (
-# 24 "parser.mly"
+# 19 "parser.mly"
       (Inliner.e list)
 # 338 "parser.ml"
     ))
@@ -700,6 +700,9 @@ include struct
       | LPAREN ->
           let _menhir_stack = MenhirCell1_exp (_menhir_stack, _menhir_s, _v) in
           _menhir_run_01 _menhir_stack _menhir_lexbuf _menhir_lexer MenhirState23
+      | LET ->
+          let _menhir_stack = MenhirCell1_exp (_menhir_stack, _menhir_s, _v) in
+          _menhir_run_02 _menhir_stack _menhir_lexbuf _menhir_lexer MenhirState23
       | INT _v_0 ->
           let _menhir_stack = MenhirCell1_exp (_menhir_stack, _menhir_s, _v) in
           _menhir_run_06 _menhir_stack _menhir_lexbuf _menhir_lexer _v_0 MenhirState23
@@ -715,7 +718,7 @@ include struct
       | FUN ->
           let _menhir_stack = MenhirCell1_exp (_menhir_stack, _menhir_s, _v) in
           _menhir_run_10 _menhir_stack _menhir_lexbuf _menhir_lexer MenhirState23
-      | ELSE | IN | LET | RPAREN | SEMISEMI | THEN ->
+      | ELSE | IN | RPAREN | SEMISEMI | THEN ->
           let MenhirCell1_IN (_menhir_stack, _) = _menhir_stack in
           let MenhirCell1_exp (_menhir_stack, _, e1) = _menhir_stack in
           let MenhirCell1_pat (_menhir_stack, _, p) = _menhir_stack in
@@ -958,19 +961,25 @@ include struct
       | LPAREN ->
           let _menhir_stack = MenhirCell1_exp (_menhir_stack, _menhir_s, _v) in
           _menhir_run_01 _menhir_stack _menhir_lexbuf _menhir_lexer MenhirState13
+      | LET ->
+          let _menhir_stack = MenhirCell1_exp (_menhir_stack, _menhir_s, _v) in
+          _menhir_run_02 _menhir_stack _menhir_lexbuf _menhir_lexer MenhirState13
       | INT _v_0 ->
           let _menhir_stack = MenhirCell1_exp (_menhir_stack, _menhir_s, _v) in
           _menhir_run_06 _menhir_stack _menhir_lexbuf _menhir_lexer _v_0 MenhirState13
       | INLINE ->
           let _menhir_stack = MenhirCell1_exp (_menhir_stack, _menhir_s, _v) in
           _menhir_run_07 _menhir_stack _menhir_lexbuf _menhir_lexer MenhirState13
+      | IF ->
+          let _menhir_stack = MenhirCell1_exp (_menhir_stack, _menhir_s, _v) in
+          _menhir_run_08 _menhir_stack _menhir_lexbuf _menhir_lexer MenhirState13
       | IDENT _v_1 ->
           let _menhir_stack = MenhirCell1_exp (_menhir_stack, _menhir_s, _v) in
           _menhir_run_09 _menhir_stack _menhir_lexbuf _menhir_lexer _v_1 MenhirState13
       | FUN ->
           let _menhir_stack = MenhirCell1_exp (_menhir_stack, _menhir_s, _v) in
           _menhir_run_10 _menhir_stack _menhir_lexbuf _menhir_lexer MenhirState13
-      | ELSE | IF | IN | LET | RPAREN | SEMISEMI | THEN ->
+      | ELSE | IN | RPAREN | SEMISEMI | THEN ->
           let MenhirCell1_pat (_menhir_stack, _, p) = _menhir_stack in
           let MenhirCell1_FUN (_menhir_stack, _menhir_s) = _menhir_stack in
           let e1 = _v in
